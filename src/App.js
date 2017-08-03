@@ -44,7 +44,6 @@ class App extends Component {
         <form onSubmit={this.handleSubmit}>
 
           {weekdays.map((item) => {
-            window.taskid += 1;
             return ( <DayEntry
                 key={item}
                 day={item}

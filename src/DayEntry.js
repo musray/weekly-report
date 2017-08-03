@@ -11,14 +11,14 @@ class DayEntry extends Component {
 
   state = {
     tasks: [{
-      id: 0,
+      id: window.taskid++,
       primary: true
     }]
   };
 
   handleAdd = () => {
     this.setState(state => ({
-      tasks: state.tasks.concat([{id: window.taskid++, primary: false}])
+      tasks: state.tasks.concat([{id: Date.now(), primary: false}])
     }))
   };
 
