@@ -4,21 +4,19 @@ import DayEntry from './DayEntry';
 import serializeForm from 'form-serialize';
 import * as _ from 'underscore';
 
-
 class App extends Component {
 
   state = {
-    data: []
+    data: [],
+    day: '',
+    person: ''
   };
 
   handleSubmit = (evt) => {
     evt.preventDefault();
-    const formValues = serializeForm(evt.target, { hash6: true });
+    console.log(this.state.data)
   };
 
-  // state.data是每周所有task的array
-  // task是一个这样的object: {id: 0, day: 0, task: '', active: true, consumption: 3.5}
-  // 当<TaskEntry>有change的时候，通过handleChange来更新App的state
   handleChange = (target) => {
     let presence = false;
     for (const item of this.state.data) {
