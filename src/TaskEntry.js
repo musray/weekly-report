@@ -27,6 +27,10 @@ class TaskEntry extends Component {
     this.setState({category: value})
   };
 
+  handleConsumptionChange = (evt, index, value) => {
+    this.setState({consumption: value})
+  };
+
   componentDidMount() {
     this.props.handleChange(this.state)
   }
@@ -35,6 +39,7 @@ class TaskEntry extends Component {
     const projects = [];
     const tasks = [];
     const categories = [];
+    const durations = [];
 
     for (const project of PROJECT_DATA.projects) {
       projects.push(<MenuItem value={project} key={PROJECT_DATA.projects.indexOf(project)} primaryText={project} />)
@@ -44,6 +49,9 @@ class TaskEntry extends Component {
     }
     for (const item of PROJECT_DATA.categories) {
       categories.push(<MenuItem value={item} key={PROJECT_DATA.categories.indexOf(item)} primaryText={item} />)
+    }
+    for (const item of PROJECT_DATA.durations) {
+      durations.push(<MenuItem value={item} key={PROJECT_DATA.durations.indexOf(item)} primaryText={item} />)
     }
 
     return (
@@ -90,16 +98,27 @@ class TaskEntry extends Component {
             onChange={this.handleTaskChange}
             name="task"
           /> }
-        <TextField
-          hintText="例如: 3.5"
-          floatingLabelText="输入工时"
+        <SelectField
+          floatingLabelText="选择工作用时"
           floatingLabelFixed={true}
+          value={this.state.consumption}
+          onChange={this.handleConsumptionChange}
+          // maxHeight={200}
           name="consumption"
-        />
+        >
+          {durations}
+        </SelectField>
+        {/*<TextField*/}
+          {/*hintText="例如: 3.5"*/}
+          {/*floatingLabelText="输入工时"*/}
+          {/*floatingLabelFixed={true}*/}
+          {/*name="consumption"*/}
+        {/*/>*/}
         <FlatButton
           label="X"
           secondary={true}
           onClick={(evt) => this.props.handleRemove(this.props.task.id)}
+          disabled={this.props.task.primary}
         />
       </div>
 
