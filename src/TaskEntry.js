@@ -26,6 +26,10 @@ class TaskEntry extends Component {
     this.setState({category: value})
   };
 
+  componentDidMount() {
+    this.props.handleChange(this.state)
+  }
+
   render() {
     const projects = [];
     const tasks = [];
@@ -49,6 +53,7 @@ class TaskEntry extends Component {
           value={this.state.project}
           onChange={this.handleProjectChange}
           // maxHeight={200}
+          name="project"
         >
           {projects}
         </SelectField>
@@ -57,7 +62,8 @@ class TaskEntry extends Component {
           floatingLabelFixed={true}
           value={this.state.category}
           onChange={this.handleCategoryChange}
-          maxHeight={200}
+          // maxHeight={200}
+          name="category"
         >
           {categories}
         </SelectField>
@@ -68,6 +74,7 @@ class TaskEntry extends Component {
             maxHeight={200}
             value={this.state.task}
             onChange={this.handleTaskChange}
+            name="task"
           >
             {tasks}
           </SelectField> }
@@ -80,11 +87,13 @@ class TaskEntry extends Component {
             rowsMax={4}
             value={this.state.task}
             onChange={this.handleTaskChange}
+            name="task"
           /> }
         <TextField
           hintText="例如: 3.5"
           floatingLabelText="输入工时"
           floatingLabelFixed={true}
+          name="consumption"
         />
         <FlatButton
           label="X"
