@@ -16,24 +16,32 @@ class TaskEntry extends Component {
   };
 
   handleProjectChange = (evt, index, value) => {
-    this.setState({project: value})
+    this.setState({project: value}, () =>
+      this.props.handleChange(this.state))
   };
 
   handleTaskChange = (evt, index, value) => {
-    this.setState({task: value? value: evt.target.value})
+    this.setState({task: value? value: evt.target.value}, () =>
+      this.props.handleChange(this.state))
   };
 
   handleCategoryChange = (evt, index, value) => {
-    this.setState({category: value})
+    this.setState({category: value}, () =>
+      this.props.handleChange(this.state))
   };
 
   handleConsumptionChange = (evt, index, value) => {
-    this.setState({consumption: value})
+    this.setState({consumption: value}, () =>
+      this.props.handleChange(this.state))
   };
 
-  componentDidMount() {
-    this.props.handleChange(this.state)
-  }
+  // componentDidMount() {
+  //   this.props.handleChange(this.state)
+  // }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   // console.log(this.state.id + ' yes it\'s get updated');
+  // }
 
   render() {
     const projects = [];
@@ -108,12 +116,6 @@ class TaskEntry extends Component {
         >
           {durations}
         </SelectField>
-        {/*<TextField*/}
-          {/*hintText="例如: 3.5"*/}
-          {/*floatingLabelText="输入工时"*/}
-          {/*floatingLabelFixed={true}*/}
-          {/*name="consumption"*/}
-        {/*/>*/}
         <FlatButton
           label="X"
           secondary={true}
