@@ -8,6 +8,7 @@ import * as PROJECT_DATA from './projectData';
 class TaskEntry extends Component {
 
   state = {
+    id: this.props.id,
     project: '',
     category: '',
     task: '',

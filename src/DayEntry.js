@@ -6,12 +6,12 @@ import * as PROJECT_DATA from './projectData';
 // 在window上定义一个id
 // 后续代码里可以直接引用这个id
 
-window.taskid = 0;
+// window.taskid = 0;
 class DayEntry extends Component {
 
   state = {
     tasks: [{
-      id: window.taskid++,
+      id: Date.now(),
       primary: true
     }]
   };
@@ -36,6 +36,7 @@ class DayEntry extends Component {
       <TaskEntry
         task={task}
         key={task.id}
+        id={task.id}
         handleRemove={this.handleRemove}
         handleChange={this.props.handleChange}
         // id={this..id}
