@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import DayEntry from './DayEntry';
-import serializeForm from 'form-serialize';
-import * as _ from 'underscore';
+import * as PROJECT_DATA from './projectData';
+import sortBy from 'sort-by';
+// import serializeForm from 'form-serialize';
 
 class App extends Component {
 
   state = {
     data: [],
-    day: '',
-    person: ''
+    daySpan: '',
+    user: ''
   };
 
   handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(this.state.data)
+    const showup = JSON.stringify(this.state.data);
+    alert(showup);
   };
 
   handleChange = (target) => {
@@ -44,13 +48,48 @@ class App extends Component {
     }
   };
 
+  handleDaySpanSelect = (evt, index, value) => {
+    this.setState({daySpan: value})
+  };
+
+  handleUserSelect = (evt, index, value) => {
+    this.setState({user: value})
+  };
+
   render() {
 
     const weekdays = [0, 1, 2, 3, 4, 5, 6];
+    const users = PROJECT_DATA.users.sort(sortBy('name'));
+    const userMenuItems = [];
+
+
+    for (const item of users) {
+      userMenuItems.push(<MenuItem value={item.name} key={users.indexOf(item)} primaryText={item.name} />)
+    }
 
     return (
       <div>
         <h1>周报系统</h1>
+
+        {/* 周数选择；本周=0， 上周=1 */}
+        <SelectField
+          floatingLabelText="周选择"
+          floatingLabelFixed={true}
+          value={this.state.daySpan}
+          onChange={this.handleDaySpanSelect}
+        >
+          <MenuItem value={1} primaryText="本周" />
+          <MenuItem value={0} primaryText="上周" />
+        </SelectField>
+
+        <SelectField
+          floatingLabelText="填报人"
+          floatingLabelFixed={true}
+          value={this.state.user}
+          onChange={this.handleUserSelect}
+        >
+          {userMenuItems}
+        </SelectField>
 
         <form onSubmit={this.handleSubmit}>
 
