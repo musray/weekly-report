@@ -12,8 +12,13 @@ class TaskEntry extends Component {
     project: '',
     category: '',
     task: '',
-    consumption: ''
+    consumption: '',
+    absence: this.props.absence
   };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ absence: nextProps.absence })
+  }
 
   handleProjectChange = (evt, index, value) => {
     this.setState({project: value}, () =>
@@ -71,6 +76,7 @@ class TaskEntry extends Component {
           onChange={this.handleProjectChange}
           // maxHeight={200}
           name="project"
+          disabled={this.state.absence}
         >
           {projects}
         </SelectField>
@@ -81,6 +87,7 @@ class TaskEntry extends Component {
           onChange={this.handleCategoryChange}
           // maxHeight={200}
           name="category"
+          disabled={this.state.absence}
         >
           {categories}
         </SelectField>
@@ -92,6 +99,7 @@ class TaskEntry extends Component {
             value={this.state.task}
             onChange={this.handleTaskChange}
             name="task"
+            disabled={this.state.absence}
           >
             {tasks}
           </SelectField> }
@@ -105,6 +113,7 @@ class TaskEntry extends Component {
             value={this.state.task}
             onChange={this.handleTaskChange}
             name="task"
+            disabled={this.state.absence}
           /> }
         <SelectField
           floatingLabelText="选择工作用时"
@@ -113,6 +122,7 @@ class TaskEntry extends Component {
           onChange={this.handleConsumptionChange}
           // maxHeight={200}
           name="consumption"
+          disabled={this.state.absence}
         >
           {durations}
         </SelectField>

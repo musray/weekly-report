@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import TaskEntry from './TaskEntry';
+import Toggle from 'material-ui/Toggle';
+import { toggleStyles } from './style/styles';
 import getWeek from './utility/get-week';
 import * as PROJECT_DATA from './projectData';
 
@@ -13,7 +15,8 @@ class DayEntry extends Component {
     tasks: [{
       id: Date.now(),
       primary: true
-    }]
+    }],
+    absence: false
   };
 
   handleAdd = () => {
@@ -29,14 +32,20 @@ class DayEntry extends Component {
     this.setState({tasks: filteredList})
   };
 
+  handleChangeActive = () => {
+    this.setState({absence: !this.state.absence})
+  };
+
   render() {
     // const
     // const childLists = this.state.tasks;
+    let absence = this.state.absence;
     const childNode = this.state.tasks.map(task => (
       <TaskEntry
         task={task}
         key={task.id}
         id={task.id}
+        absence={absence}
         handleRemove={this.handleRemove}
         handleChange={this.props.handleChange}
         // id={this..id}
@@ -51,6 +60,17 @@ class DayEntry extends Component {
           {PROJECT_DATA.weekDays[this.props.day]}
           <span>{weekdays[this.props.day].toLocaleDateString()}</span>
         </h2>
+
+        <div style={toggleStyles.block}>
+          <Toggle
+            label="休假"
+            style={toggleStyles.toggle}
+            onClick={this.handleChangeActive}
+          />
+        </div>
+
+        {/*{this.state.active &&*/}
+        {/*}*/}
         <div>
           {childNode}
         </div>
@@ -59,6 +79,7 @@ class DayEntry extends Component {
           label="增加一项工作"
           fullWidth={true}
           onClick={() => this.handleAdd()}
+          disabled={this.state.absence}
         />
       </div>
     )
