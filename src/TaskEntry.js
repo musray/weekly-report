@@ -17,7 +17,19 @@ class TaskEntry extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ absence: nextProps.absence })
+    if (nextProps.absence) {
+      this.setState({
+        project: '',
+        category: '',
+        task: '',
+        consumption: '',
+        absence: nextProps.absence
+      })
+    } else {
+      this.setState({
+        absence: nextProps.absence
+      })
+    }
   }
 
   handleProjectChange = (evt, index, value) => {
