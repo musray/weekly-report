@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import TaskEntry from './TaskEntry';
+import getWeek from './utility/get-week';
 import * as PROJECT_DATA from './projectData';
 
 // 在window上定义一个id
 // 后续代码里可以直接引用这个id
 
-// window.taskid = 0;
 class DayEntry extends Component {
 
   state = {
@@ -42,9 +42,15 @@ class DayEntry extends Component {
         // id={this..id}
       />
     ));
+
+    const weekdays = getWeek();
+
     return (
       <div>
-        <h2>{PROJECT_DATA.weekDays[this.props.day]}</h2>
+        <h2>
+          {PROJECT_DATA.weekDays[this.props.day]}
+          <span>{weekdays[this.props.day].toLocaleDateString()}</span>
+        </h2>
         <div>
           {childNode}
         </div>

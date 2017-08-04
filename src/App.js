@@ -82,6 +82,7 @@ class App extends Component {
           <MenuItem value={0} primaryText="上周" />
         </SelectField>
 
+        {/* 用户选择 */}
         <SelectField
           floatingLabelText="填报人"
           floatingLabelFixed={true}
@@ -97,6 +98,7 @@ class App extends Component {
             return ( <DayEntry
                 key={item}
                 day={item}
+                daySpan={this.state.daySpan}
                 handleChange={this.handleChange}
               /> )
           })}
