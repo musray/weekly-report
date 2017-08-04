@@ -11,7 +11,7 @@ class App extends Component {
 
   state = {
     data: [],
-    daySpan: '',
+    lastweek: false,
     user: ''
   };
 
@@ -48,8 +48,8 @@ class App extends Component {
     }
   };
 
-  handleDaySpanSelect = (evt, index, value) => {
-    this.setState({daySpan: value})
+  handleWeekSelect = (evt, index, value) => {
+    this.setState({lastweek: value})
   };
 
   handleUserSelect = (evt, index, value) => {
@@ -75,11 +75,11 @@ class App extends Component {
         <SelectField
           floatingLabelText="周选择"
           floatingLabelFixed={true}
-          value={this.state.daySpan}
-          onChange={this.handleDaySpanSelect}
+          value={this.state.lastweek}
+          onChange={this.handleWeekSelect}
         >
-          <MenuItem value={1} primaryText="本周" />
-          <MenuItem value={0} primaryText="上周" />
+          <MenuItem value={false} primaryText="本周" />
+          <MenuItem value={true} primaryText="上周" />
         </SelectField>
 
         {/* 用户选择 */}
@@ -98,7 +98,7 @@ class App extends Component {
             return ( <DayEntry
                 key={item}
                 day={item}
-                daySpan={this.state.daySpan}
+                lastweek={this.state.lastweek}
                 handleChange={this.handleChange}
               /> )
           })}

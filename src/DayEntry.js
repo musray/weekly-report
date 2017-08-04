@@ -43,7 +43,7 @@ class DayEntry extends Component {
       />
     ));
 
-    const weekdays = getWeek();
+    const weekdays = getWeek(this.props.lastweek);
 
     return (
       <div>

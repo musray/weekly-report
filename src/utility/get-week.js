@@ -7,14 +7,19 @@
 // 2. 根据今天，把本周和上周的日期全都算出来
 // 3. 根据输入，返回本周或者上周的日期
 
-const getWeek = ( current = new Date(), lastWeek = false ) => {
+const getWeek = ( lastWeek = false ) => {
 
   // 根据当前时间，找到上一个星期天
   let result = [];
+  let current = new Date();
+
+  if ( lastWeek === true ) {
+    current.setDate( current.getDate() -7 );
+  }
 
   for (let i = 1; i <= 7; i++) {
     let newDay = new Date(
-      current.setDate( current.getDate() - current.getDay() + i)
+      current.setDate( current.getDate() - current.getDay() + i )
     );
     result.push(newDay);
   }
