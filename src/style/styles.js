@@ -1,9 +1,9 @@
 export const toggleStyles = {
   block: {
-    maxWidth: 100,
+    width: '200px',
   },
   toggle: {
-    marginBottom: 16,
+    // marginBottom: 16,
   },
   thumbOff: {
     backgroundColor: '#ffcccc',

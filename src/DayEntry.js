@@ -55,18 +55,21 @@ class DayEntry extends Component {
     const weekdays = getWeek(this.props.lastweek);
 
     return (
-      <div>
-        <h2>
-          {PROJECT_DATA.weekDays[this.props.day]}
-          <span>{weekdays[this.props.day].toLocaleDateString()}</span>
-        </h2>
-
-        <div style={toggleStyles.block}>
-          <Toggle
-            label="休假"
-            style={toggleStyles.toggle}
-            onClick={this.handleChangeActive}
-          />
+      <div className="day-container">
+        <div className="day-title">
+          <div className="date-display">
+            <h2>
+              {PROJECT_DATA.weekDays[this.props.day]}
+              <span className="date-small">{weekdays[this.props.day].toLocaleDateString()}</span>
+            </h2>
+          </div>
+          <div className="day-active-control">
+            <Toggle
+              label="休假"
+              // style={toggleStyles.labelStyle}
+              onClick={this.handleChangeActive}
+            />
+          </div>
         </div>
 
         {/*{this.state.active &&*/}
