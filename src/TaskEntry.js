@@ -3,6 +3,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import * as PROJECT_DATA from './projectData';
 
 class TaskEntry extends Component {
@@ -80,8 +81,9 @@ class TaskEntry extends Component {
     }
 
     return (
-      <div>
+      <div className="task-container">
         <SelectField
+          className="input-field"
           floatingLabelText="选择项目"
           floatingLabelFixed={true}
           value={this.state.project}
@@ -93,6 +95,7 @@ class TaskEntry extends Component {
           {projects}
         </SelectField>
         <SelectField
+          className="input-field"
           floatingLabelText="选择工作内容"
           floatingLabelFixed={true}
           value={this.state.category}
@@ -105,6 +108,7 @@ class TaskEntry extends Component {
         </SelectField>
         { this.state.category !== '其他' &&
           <SelectField
+            className="input-field"
             floatingLabelText="选择文件"
             floatingLabelFixed={true}
             maxHeight={200}
@@ -117,6 +121,7 @@ class TaskEntry extends Component {
           </SelectField> }
         { this.state.category === '其他' &&
           <TextField
+            className="input-field"
             floatingLabelText="输入工作内容描述"
             floatingLabelFixed={true}
             multiLine={true}
@@ -128,6 +133,7 @@ class TaskEntry extends Component {
             disabled={this.state.absence}
           /> }
         <SelectField
+          className="input-field"
           floatingLabelText="选择工作用时"
           floatingLabelFixed={true}
           value={this.state.consumption}
@@ -145,7 +151,6 @@ class TaskEntry extends Component {
           disabled={this.props.task.primary}
         />
       </div>
-
     )
   }
 }

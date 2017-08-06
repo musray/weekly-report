@@ -28,6 +28,7 @@ body, .app {
 }
 .App-header h1 {
   text-align: center;
+  letter-spacing: 5px;
 }
 .App-header-container {
   display: flex;
@@ -42,10 +43,13 @@ body, .app {
   margin: 0 20px;
 }
 .day-container:nth-of-type(1) {
-  border-top: dotted salmon;
+  border-top: solid salmon;
 }
 .day-container {
   border-bottom: dotted salmon;
+}
+.day-container:last-of-type {
+  border-bottom: solid salmon;
 }
 .day-title {
   border-bottom: inset;
@@ -55,14 +59,36 @@ body, .app {
 .date-display {
   width: 300px;
 }
+.date-display h2 {
+  letter-spacing: 3px;
+}
 .date-small {
   margin-left: 10px;
   font-size: 0.6em;
+  letter-spacing: 2px;
 }
 .day-active-control {
   width: 100px;
   display: flex;
   align-items: center;
+}
+.task-container {
+  display: flex;
+  align-items: center;
+}
+.App-footer {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: small;
+}
+.wide-btn-text button {
+  letter-spacing: 3px;
+}
+.input-field {
+  margin: 0 5px;
+  /*background-color: rgb(255,255,255);*/
 }
 
 

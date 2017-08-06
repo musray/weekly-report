@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import TaskEntry from './TaskEntry';
 import Toggle from 'material-ui/Toggle';
 import { toggleStyles } from './style/styles';
@@ -78,7 +79,7 @@ class DayEntry extends Component {
           {childNode}
         </div>
 
-        <FlatButton
+        <RaisedButton
           label="增加一项工作"
           fullWidth={true}
           onClick={() => this.handleAdd()}

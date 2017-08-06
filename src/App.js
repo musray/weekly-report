@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import DayEntry from './DayEntry';
 import * as PROJECT_DATA from './projectData';
 import sortBy from 'sort-by';
@@ -70,7 +70,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h1>周报系统</h1>
+          <h1>周报填写</h1>
 
           <div className="App-header-container">
             {/* 周数选择；本周=0， 上周=1 */}
@@ -108,13 +108,21 @@ class App extends Component {
               /> )
             })}
 
-            <FlatButton
-              label="提交"
+            <RaisedButton
+              className="wide-btn-text"
+              label="确认提交"
               primary={true}
               type="submit"
+              fullWidth={true}
+              buttonStyle={{height: "60px", margin: 0, padding: 0}}
+              style={{letterSpacing: "5px", marginTop: "20px"}}
             />
           </form>
 
+        </div>
+
+        <div className="App-footer">
+          <p className="footer-caption">周报填写系统 v0.1</p>
         </div>
       </div>
     );
