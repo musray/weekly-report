@@ -55,7 +55,7 @@ class TaskEntry extends Component {
   };
 
   handleRemarkChange = (evt, index, value) => {
-    this.setState({remark: value}, () =>
+    this.setState((state) => ({remark: state.remark? state.remark + value: value}), () =>
       this.props.handleChange(this.state))
   };
 
@@ -94,7 +94,7 @@ class TaskEntry extends Component {
           floatingLabelFixed={true}
           value={this.state.project}
           onChange={this.handleProjectChange}
-          maxHeight={200}
+          maxHeight={300}
           name="project"
           disabled={this.state.absence}
         >
@@ -106,7 +106,7 @@ class TaskEntry extends Component {
           floatingLabelFixed={true}
           value={this.state.category}
           onChange={this.handleCategoryChange}
-          maxHeight={200}
+          maxHeight={300}
           name="category"
           disabled={this.state.absence}
         >
@@ -116,7 +116,7 @@ class TaskEntry extends Component {
           className="input-field"
           floatingLabelText="选择文件"
           floatingLabelFixed={true}
-          maxHeight={200}
+          maxHeight={300}
           value={this.state.task}
           onChange={this.handleTaskChange}
           name="task"
@@ -130,7 +130,7 @@ class TaskEntry extends Component {
           floatingLabelFixed={true}
           value={this.state.consumption}
           onChange={this.handleConsumptionChange}
-          maxHeight={200}
+          maxHeight={300}
           name="consumption"
           disabled={this.state.absence}
         >
@@ -141,7 +141,7 @@ class TaskEntry extends Component {
           floatingLabelText="备注"
           floatingLabelFixed={true}
           multiLine={true}
-          rows={1}
+          rows={2}
           rowsMax={4}
           value={this.state.remark}
           onChange={this.handleRemarkChange}

@@ -74,7 +74,7 @@ body, .app {
 }
 .task-container {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 .App-footer {
   height: 100px;
