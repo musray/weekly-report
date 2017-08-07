@@ -4,7 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import * as PROJECT_DATA from './projectData';
+import * as PROJECT_DATA from './utility/project-data';
 
 class TaskEntry extends Component {
 
@@ -14,6 +14,7 @@ class TaskEntry extends Component {
     category: '',
     task: '',
     consumption: '',
+    remark: '',
     absence: this.props.absence
   };
 
@@ -53,6 +54,11 @@ class TaskEntry extends Component {
       this.props.handleChange(this.state))
   };
 
+  handleRemarkChange = (evt, index, value) => {
+    this.setState({remark: value}, () =>
+      this.props.handleChange(this.state))
+  };
+
   // componentDidMount() {
   //   this.props.handleChange(this.state)
   // }
@@ -88,7 +94,7 @@ class TaskEntry extends Component {
           floatingLabelFixed={true}
           value={this.state.project}
           onChange={this.handleProjectChange}
-          // maxHeight={200}
+          maxHeight={200}
           name="project"
           disabled={this.state.absence}
         >
@@ -100,50 +106,48 @@ class TaskEntry extends Component {
           floatingLabelFixed={true}
           value={this.state.category}
           onChange={this.handleCategoryChange}
-          // maxHeight={200}
+          maxHeight={200}
           name="category"
           disabled={this.state.absence}
         >
           {categories}
         </SelectField>
-        { this.state.category !== '其他' &&
-          <SelectField
-            className="input-field"
-            floatingLabelText="选择文件"
-            floatingLabelFixed={true}
-            maxHeight={200}
-            value={this.state.task}
-            onChange={this.handleTaskChange}
-            name="task"
-            disabled={this.state.absence}
-          >
-            {tasks}
-          </SelectField> }
-        { this.state.category === '其他' &&
-          <TextField
-            className="input-field"
-            floatingLabelText="输入工作内容描述"
-            floatingLabelFixed={true}
-            multiLine={true}
-            rows={1}
-            rowsMax={4}
-            value={this.state.task}
-            onChange={this.handleTaskChange}
-            name="task"
-            disabled={this.state.absence}
-          /> }
+        <SelectField
+          className="input-field"
+          floatingLabelText="选择文件"
+          floatingLabelFixed={true}
+          maxHeight={200}
+          value={this.state.task}
+          onChange={this.handleTaskChange}
+          name="task"
+          disabled={this.state.absence}
+        >
+          {tasks}
+        </SelectField>
         <SelectField
           className="input-field"
           floatingLabelText="选择工作用时"
           floatingLabelFixed={true}
           value={this.state.consumption}
           onChange={this.handleConsumptionChange}
-          // maxHeight={200}
+          maxHeight={200}
           name="consumption"
           disabled={this.state.absence}
         >
           {durations}
         </SelectField>
+        <TextField
+          className="input-field"
+          floatingLabelText="备注"
+          floatingLabelFixed={true}
+          multiLine={true}
+          rows={1}
+          rowsMax={4}
+          value={this.state.remark}
+          onChange={this.handleRemarkChange}
+          name="remark"
+          disabled={this.state.absence}
+        />
         <FlatButton
           label="X"
           secondary={true}

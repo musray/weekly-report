@@ -5,7 +5,7 @@ import TaskEntry from './TaskEntry';
 import Toggle from 'material-ui/Toggle';
 import { toggleStyles } from './style/styles';
 import getWeek from './utility/get-week';
-import * as PROJECT_DATA from './projectData';
+import * as PROJECT_DATA from './utility/project-data';
 
 // 在window上定义一个id
 // 后续代码里可以直接引用这个id

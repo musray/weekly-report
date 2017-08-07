@@ -3,7 +3,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import DayEntry from './DayEntry';
-import * as PROJECT_DATA from './projectData';
+import * as PROJECT_DATA from './utility/project-data';
 import sortBy from 'sort-by';
 // import serializeForm from 'form-serialize';
 
